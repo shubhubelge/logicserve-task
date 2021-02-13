@@ -75,12 +75,22 @@
   width: 108px;
   display: block;
 }
+.person-flag{
+  position: absolute;
+  bottom: 0;
+  right: 5px;
+  width: 108px;
+  display: block;
+}
 @media (max-width: 575.98px) {
   .chips-container {
     height: auto;
     padding: 0px;
   }
   .person {
+    width: 64px;
+  }
+  .person-flag{
     width: 64px;
   }
   .chip {
