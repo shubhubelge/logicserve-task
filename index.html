@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="main-container">
+    <header class="blog-header py-3 border-bottom">
+      <div class="d-flex justify-content-center align-items-center">
+        <div style="height: 6vh;">
+          <!-- <img src="assets/maximess_logo.png" alt="" width="200" class=""> -->
+        </div>
+      </div>
+    </header>
+    <main id="app" class="background container-fluid ">
+      <!-- <div class="row">
+<div class="col-12 col-lg-6"> -->
+      <div class="container" v-if="step<=7">
+        <h3 class="my-4">Lorem ipsum, dolor sit amet consectetur adipisicing elit. </h3>
+
+        <div class="chips-container d-flex flex-wrap justify-content-center" >
+          <a class="chip d-flex align-items-center" v-for="(n,index) in quation" :key="index" v-on:click="addtoarray(n)">
+            <div class="chip-contant text-center">
+              <div class="main-text"> {{n.text}}</div>
+              <!-- <div class="secondary-text">dfdsfd</div> -->
+            </div>
+            <img src="https://cdn.pixabay.com/photo/2014/03/24/17/19/teacher-295387__340.png">
+          </a>
+
+        </div>
+        <div class="track">
+          <!-- <img src="./assets/men.png" alt="" class="" v-bind:style="'margin-left:'+personMargin+'%;'"> -->
+          <img src="./assets/men.png" alt="" class="person" v-bind:style="'margin-left: '+personMargin+'%;'">
+        </div>
+      </div>
+      <div class="container" v-if="step===8">
+        <h3 class="my-4">you're almost there! Result</h3>
+
+        <div class="chips-container d-flex flex-wrap justify-content-center" >
+          <div v-for="(n,index) in final" :key="index">{{n}}</div>
+        
+        </div>
+        
+      </div>
+    </main>
+  </div>
+  <!-- <div class="col-12 col-lg-6">secons</div>
+</div>
+</div> -->
+  <script src="js/vue.js"></script>
+  <script src="main.js"></script>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+
+  <script src="js/bootstrap.js"></script>
+  <script>
+    const app = new Vue({
+      el: "#app",
+      data() {
+        return {
+          message: 'Hello Vue!',
+          foo: "bar",
+          final: [],
+          personMargin: 5,
+          marginCal: 0,
+          step: 1,
+          quation: [
+            { text: "Competitive Pricing" , secondtext:"Competitive Pricing"},
+            { text: "Easy Online Access", secondtext:"Competitive Pricing" },
+            { text: "Dealing directly with Company representatives", secondtext:"Competitive Pricing" },
+            { text: "Hassle free claims process", secondtext:"Competitive Pricing" },
+            { text: "Sales representative should be highly expertise", secondtext:"Competitive Pricing" },
+            { text: "Easy Documentation", secondtext:"Competitive Pricing" }
+          ]
+        };
+      },
+      // template: "<div>{{foo}}</div>",
+      beforeMount() {
+        console.log(this); // <div id="app" data-fizz="buzz"></div>
+        console.log(this.$el); // <div id="app" data-fizz="buzz"></div>
+        // console.log(this.$el.dataset.fizz); // buzz
+      },
+      mounted() {
+        console.log(this.$el); // <div>bar</div>
+        // console.log(this.$el.dataset.fizz); // undefined
+      },
+      // computed(){
+
+      // },
+      methods: {
+        addtoarray(item) {
+          // this.final.map(arritem=>{
+          //   console.log("this.final.indexOf(arritem.text)")
+          //   console.log(this.final.indexOf(arritem.text))
+          //   const index = this.final.indexOf(arritem)
+          //   console.log(arritem)
+          //   this.final.push(item)
+          //   if(arritem.text === item.text){
+          //     if (index > -1) {
+          //       this.final.splice(index, 1);
+          //     }
+          //   }else{
+          //     this.final.push(item)
+          //   }
+          // })
+          this.final.push(item)
+          this.step++
+          if(this.step === 2){
+            this.quation= []
+            this.quation =  [
+            { text: " this.quation" , secondtext:"Competitive Pricing"},
+            { text: "High Policy Term Long Term coverage of policy", secondtext:"Competitive Pricing" },
+            { text: "Adequate savings for life goals / retirement needs", secondtext:"Competitive Pricing" },
+          ]
+          }
+          if(this.step === 3){
+            this.quation= []
+            this.quation =  [
+            { text: " Life insurance - ULIP Where money is invested in stock market" , secondtext:"Competitive Pricing"},
+            { text: "Health Insurance", secondtext:"Competitive Pricing" },
+            { text: "Recurring Deposits", secondtext:"Competitive Pricing" },
+            { text: "Life insurance - Traditional savings, endowment, money back", secondtext:"Competitive Pricing" },
+            { text: "Bank Fixed Deposits", secondtext:"Competitive Pricing" },
+            { text: "Family Banking Accounts", secondtext:"Competitive Pricing" },
+          ]
+          }
+          if(this.step === 4 || this.step ===5 || this.step === 6 || this.step === 7){
+            // this.quation
+             this.quation.sort(function(){return 0.5 - Math.random()});
+          }
+          console.log(this.final)
+          const marginCal = 10
+          if (this.personMargin >= 85) return this.personMargin = this.personMargin
+          this.personMargin = this.personMargin + marginCal;
+        },
+        removeitem() {
+
+          console.log(this.final)
+        },
+        calculatePerdis() {
+          this.marginCal = 100 / 7
+        }
+      }
+    });
+
+  </script>
+</body>
+
+</html>
