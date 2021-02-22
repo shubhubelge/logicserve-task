@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="css/bootstrap.css">
   <link rel="stylesheet" href="css/style.css">
+  <script src="https://use.fontawesome.com/f1ce373ee8.js"></script>
 </head>
 <body>
   <div class="main-container">
@@ -20,8 +21,13 @@
       <!-- <div class="row">
 <div class="col-12 col-lg-6"> -->
       <div class="container" v-if="step<=7">
-        <h3 class="my-4">Lorem ipsum, dolor sit amet consectetur adipisicing elit. </h3>
-
+        <h3 class="my-4">Lorem ipsum, dolor sit amet consectetur adipisicing elit. {{step}}</h3>
+        <div class="row">
+          <div class="col-12 col-lg-1" >
+            <a class="back-icon" v-on:click="backQut">
+            <i class="fa fa-angle-double-left" aria-hidden="true" style="background:#fff;"></i></a>
+          </div>
+          <div class="col-12 col-lg-11">
         <div class="chips-container d-flex flex-wrap justify-content-center" >
           <a class="chip d-flex align-items-center" v-for="(n,index) in quation" :key="index" v-on:click="addtoarray(n)">
             <div class="chip-contant text-center">
@@ -30,11 +36,13 @@
             </div>
             <img src="https://cdn.pixabay.com/photo/2014/03/24/17/19/teacher-295387__340.png">
           </a>
-
         </div>
+      </div>
+      </div>
         <div class="track">
           <!-- <img src="./assets/men.png" alt="" class="" v-bind:style="'margin-left:'+personMargin+'%;'"> -->
-          <img src="./assets/men.png" alt="" class="person" v-bind:style="'margin-left: '+personMargin+'%;'">
+          <!-- <img src="./assets/men.png" alt="" class="person" v-bind:style="'margin-left: '+personMargin+'%;'"> -->
+          <img src="./assets/men.png" alt="" class="person">
           <img src="./assets/flag-man.png" alt="" class="person-flag">
         </div>
       </div>
@@ -55,10 +63,10 @@
   <script src="js/vue.js"></script>
   <script src="main.js"></script>
 
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+  <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-    crossorigin="anonymous"></script>
-
+    crossorigin="anonymous"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="js/bootstrap.js"></script>
   <script>
     const app = new Vue({
@@ -83,33 +91,35 @@
       },
       // template: "<div>{{foo}}</div>",
       beforeMount() {
-        console.log(this); // <div id="app" data-fizz="buzz"></div>
-        console.log(this.$el); // <div id="app" data-fizz="buzz"></div>
+        // console.log(this); // <div id="app" data-fizz="buzz"></div>
+        // console.log(this.$el); // <div id="app" data-fizz="buzz"></div>
         // console.log(this.$el.dataset.fizz); // buzz
       },
       mounted() {
-        console.log(this.$el); // <div>bar</div>
+        // console.log(this.$el); // <div>bar</div>
         // console.log(this.$el.dataset.fizz); // undefined
       },
       // computed(){
 
       // },
       methods: {
+        backQut(){
+          // console.log("click")
+          if(this.step!=1){
+            this.step--
+            this.quation.sort(function(){return 0.5 - Math.random()});
+             $(".person").animate({left: '-=10%'},"slow");
+          }
+          
+        // if(this.step === 4 || this.step ===5 || this.step === 6 || this.step === 7){
+            // this.quation
+          
+
+          
+        },
         addtoarray(item) {
-          // this.final.map(arritem=>{
-          //   console.log("this.final.indexOf(arritem.text)")
-          //   console.log(this.final.indexOf(arritem.text))
-          //   const index = this.final.indexOf(arritem)
-          //   console.log(arritem)
-          //   this.final.push(item)
-          //   if(arritem.text === item.text){
-          //     if (index > -1) {
-          //       this.final.splice(index, 1);
-          //     }
-          //   }else{
-          //     this.final.push(item)
-          //   }
-          // })
+          $(".person").animate({left: '+=10%'},"slow");
+          $(".chips-container").fadeToggle(500);
           this.final.push(item)
           this.step++
           if(this.step === 2){

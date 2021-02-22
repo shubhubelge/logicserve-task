@@ -74,6 +74,18 @@
   left: 0;
   width: 108px;
   display: block;
+  /* animation-duration: 1s; */
+
+}
+.animation-class{
+  animation-name: move-person;
+  animation-duration: 1s;
+}
+@keyframes move-person{
+  /* from{width: 100px};
+  to{width: 1000px}; */
+  0% { left: 0;}
+    100%{left : 10%;}
 }
 .person-flag{
   position: absolute;
@@ -82,7 +94,28 @@
   width: 108px;
   display: block;
 }
+.back-icon{
+  background: #fff;
+  border-radius: 50px;
+  /* padding: 4px; */
+  /* transform: translate(-50%,-50%); */
+  display: block;
+  width: 32px;
+  height: 32px;
+  box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.55);
+  -webkit-box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.55);
+  -moz-box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* .back-icon i{
+  transform: translate(-50%,-50%);
+} */
 @media (max-width: 575.98px) {
+  /* .background {
+    height: 800px;
+  } */
   .chips-container {
     height: auto;
     padding: 0px;
@@ -96,6 +129,11 @@
   .chip {
     width: 100%;
     margin: 4px;
+  }
+  .track{
+    position: relative;
+    bottom: -100px;
+    left: 0;
   }
 }
 @media (max-width: 767.98px) {
